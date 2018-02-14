@@ -1,34 +1,37 @@
 package entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Calcul {
 
-    private int max=0;
-    private int min=9;
-    private Random random = new Random();
+    private int max;
+    private int min;
+    private int firstNumber;
+    private int secondNumber;
+    private int result;
 
-    private int firstNumber = random.nextInt(max-min) + min;
-    private int secondNumber= random.nextInt(max-min) + min;
-    private int result = firstNumber + secondNumber;
+    public Calcul() {
+    }
 
-    private List<Integer> listRandom = new ArrayList<Integer>();
+    public Calcul(int max, int min, int firstNumber, int secondNumber) {
+        this.max = max;
+        this.min = min;
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+    }
 
-    public List<Integer> generateListRandom(){
-        for (int i=0; i<4;i++)
-        {
-            int buffer = random.nextInt(max-min) + min;
+    public int getMax() {
+        return max;
+    }
 
-            if (result==buffer){
-                buffer = buffer-1;
-                listRandom.add(buffer);
-            }else {
-                listRandom.add(buffer);
-            }
-        }
-        return listRandom;
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
     }
 
     public void setFirstNumber(int firstNumber) {

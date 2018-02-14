@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 public interface CalculDAO{
 
 
@@ -20,5 +22,7 @@ public interface CalculDAO{
         int getSecondNumber();
 
         void setSecondNumber(int secondNumber);
+
+        List<Integer> generateListRandom();
 
     }
