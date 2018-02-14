@@ -1,6 +1,6 @@
 package dao;
 
-public interface CalculDAO {
+public interface CalculDAO{
 
 
         void add();
