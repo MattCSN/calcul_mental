@@ -23,6 +23,6 @@ public interface CalculDAO{
 
         void setSecondNumber(int secondNumber);
 
-        List<Integer> generateListRandom();
+        List<Integer> generateListRandom(int result);
 
     }

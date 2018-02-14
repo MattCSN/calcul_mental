@@ -1,7 +1,6 @@
 package dao.impl;
 
 import dao.CalculDAO;
-import entity.Calcul;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,19 +19,30 @@ public class CalculDAOImpl implements CalculDAO {
 
     private List<Integer> listRandom = new ArrayList<Integer>();
 
-    public List<Integer> generateListRandom(){
+    public List<Integer> generateListRandom(int result){
 
-        for (int i=0; i<4;i++)
+        for (int i=0; i<4; i++)
         {
-            int buffer = random.nextInt(max-min) + min;
+            int tmp = random.nextInt(max-min) + min;
 
-            if (result==buffer){
-                buffer = buffer-1;
-                listRandom.add(buffer);
+            if (result==tmp){
+                tmp = tmp-1;
+                listRandom.add(tmp);
             }else {
-                listRandom.add(buffer);
+                listRandom.add(tmp);
             }
         }
+
+        for (int i=0; i<listRandom.size() ; i++) {
+            for (int j = i + 1; j < listRandom.size(); i++) {
+                if (listRandom.get(i) == listRandom.get(j)) {
+                    int tmp = random.nextInt(max - min) + min;
+                    listRandom.set(j, tmp);
+                }
+
+            }
+        }
+
         return listRandom;
     }
 

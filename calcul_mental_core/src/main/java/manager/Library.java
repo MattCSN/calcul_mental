@@ -3,6 +3,8 @@ package manager;
 import dao.CalculDAO;
 import dao.impl.CalculDAOImpl;
 
+import java.util.List;
+
 public class Library {
 
 
@@ -48,4 +50,5 @@ public class Library {
     public void setSecondNumber(int secondNumber){
         calculDAO.setSecondNumber(secondNumber);
     }
+    public List<Integer> generateListRandom(int result){return calculDAO.generateListRandom(result);}
 }
