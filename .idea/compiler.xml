@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="calcul_mental" />
+        <module name="calcul_mental_core" />
+        <module name="calcul_mental_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="calcul_mental" target="1.5" />
+      <module name="calcul_mental_core" target="1.5" />
+      <module name="calcul_mental_web" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
