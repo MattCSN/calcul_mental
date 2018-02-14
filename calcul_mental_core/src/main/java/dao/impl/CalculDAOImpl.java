@@ -21,7 +21,6 @@ public class CalculDAOImpl implements CalculDAO {
     private List<Integer> listRandom = new ArrayList<Integer>();
 
     public List<Integer> generateListRandom(){
-        Calcul calcul;
 
         for (int i=0; i<4;i++)
         {
