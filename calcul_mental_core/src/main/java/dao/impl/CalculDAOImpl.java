@@ -1,16 +1,41 @@
 package dao.impl;
 
 import dao.CalculDAO;
+import entity.Calcul;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CalculDAOImpl implements CalculDAO {
 
-    private int firstNumber = 0;
+    private Random random = new Random();
 
-    private int result = 0;
+    private int max=0;
+    private int min=9;
 
+    private int firstNumber = random.nextInt(max-min) + min;
+    private int secondNumber = random.nextInt(max-min) + min;
+    private int result;
 
-    private int secondNumber = 0;
+    private List<Integer> listRandom = new ArrayList<Integer>();
 
+    public List<Integer> generateListRandom(){
+        Calcul calcul;
+
+        for (int i=0; i<4;i++)
+        {
+            int buffer = random.nextInt(max-min) + min;
+
+            if (result==buffer){
+                buffer = buffer-1;
+                listRandom.add(buffer);
+            }else {
+                listRandom.add(buffer);
+            }
+        }
+        return listRandom;
+    }
 
     public void add() {
         result = firstNumber + secondNumber;
