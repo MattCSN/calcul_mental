@@ -35,7 +35,7 @@ public class CalculDAOImpl implements CalculDAO {
 
         for (int i=0; i<listRandom.size() ; i++) {
             for (int j = i + 1; j < listRandom.size(); i++) {
-                if (listRandom.get(i) == listRandom.get(j)) {
+                if (listRandom.get(i).equals(listRandom.get(j))) {
                     int tmp = random.nextInt(max - min) + min;
                     listRandom.set(j, tmp);
                 }

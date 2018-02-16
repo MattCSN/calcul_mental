@@ -1,31 +1,35 @@
 package entity;
 
+import com.sun.javafx.image.IntPixelGetter;
+
 public class Qcm {
 
     private String question;
 
 
 
-    private String propositionA;
-    private String propositionB;
-    private String propositionC;
-    private  String propositionD;
+    private Integer propositionA;
+    private Integer propositionB;
+    private Integer propositionC;
+    private Integer propositionD;
     private int difficulty;
     private String category;
+    private int reponse;
 
     public Qcm() {
     }
 
 
-    public Qcm(String question, String propositionA, String propositionB, String propositionC, String propositionD) {
+    public Qcm(String question, Integer propositionA, Integer propositionB, Integer propositionC, Integer propositionD,int reponse) {
         this.question = question;
         this.propositionA = propositionA;
         this.propositionB = propositionB;
         this.propositionC = propositionC;
         this.propositionD = propositionD;
+        this.reponse=reponse;
     }
 
-    public Qcm(String question, String propositionA, String propositionB, String propositionC, String propositionD, int difficulty, String category) {
+    public Qcm(String question, Integer propositionA, Integer propositionB, Integer propositionC, Integer propositionD, int difficulty, String category) {
         this.question = question;
         this.propositionA = propositionA;
         this.propositionB = propositionB;
@@ -43,35 +47,35 @@ public class Qcm {
         this.question = question;
     }
 
-    public String getPropositionA() {
+    public Integer getPropositionA() {
         return propositionA;
     }
 
-    public void setPropositionA(String propositionA) {
+    public void setPropositionA(Integer propositionA) {
         this.propositionA = propositionA;
     }
 
-    public String getPropositionB() {
+    public Integer getPropositionB() {
         return propositionB;
     }
 
-    public void setPropositionB(String propositionB) {
+    public void setPropositionB(Integer propositionB) {
         this.propositionB = propositionB;
     }
 
-    public String getPropositionC() {
+    public Integer getPropositionC() {
         return propositionC;
     }
 
-    public void setPropositionC(String propositionC) {
+    public void setPropositionC(Integer propositionC) {
         this.propositionC = propositionC;
     }
 
-    public String getPropositionD() {
+    public Integer getPropositionD() {
         return propositionD;
     }
 
-    public void setPropositionD(String propositionD) {
+    public void setPropositionD(Integer propositionD) {
         this.propositionD = propositionD;
     }
 
