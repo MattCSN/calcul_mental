@@ -19,7 +19,7 @@ public class CalculDAOImpl implements CalculDAO {
 
     private List<Integer> listRandom = new ArrayList<Integer>();
 
-    public List<Integer> generateListRandom(int result){
+    public List<Integer> generateListRandom(int result){ // il faut qu'une des réponses soit le résultat!
 
         for (int i=0; i<4; i++)
         {
@@ -45,6 +45,8 @@ public class CalculDAOImpl implements CalculDAO {
 
         return listRandom;
     }
+
+
 
     public void add() {
         result = firstNumber + secondNumber;
