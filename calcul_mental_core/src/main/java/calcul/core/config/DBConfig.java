@@ -60,7 +60,7 @@ import java.util.Properties;
             LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
             factory.setJpaVendorAdapter(vendorAdapter);
             factory.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-            factory.setPackagesToScan("yncrea.pw04.entity");
+            factory.setPackagesToScan("calcul.core.entity");
             factory.setDataSource(dataSource);
             factory.afterPropertiesSet();
             return factory.getObject();

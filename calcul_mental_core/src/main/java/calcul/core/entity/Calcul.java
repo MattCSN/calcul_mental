@@ -18,6 +18,10 @@ public class Calcul {
     private Type_Calcul type_calcul;
 
     public Calcul() {
+        Random random = new Random(System.currentTimeMillis());
+        this.type_calcul = Type_Calcul.Addition;
+        this.firstNumber= random.nextInt(max)+1;
+        this.secondNumber=random.nextInt(max)+1;
     }
 
     public Calcul(Type_Calcul type_calcul) {
