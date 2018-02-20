@@ -1,5 +1,9 @@
 package calcul.core.entity;
 
+
+import javax.persistence.Entity;
+
+@Entity
 public class Calcul {
 
     /*
