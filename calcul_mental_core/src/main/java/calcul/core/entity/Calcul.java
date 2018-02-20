@@ -1,5 +1,7 @@
 package calcul.core.entity;
 
+import java.util.Random;
+
 public class Calcul {
 
     /*
@@ -8,7 +10,7 @@ public class Calcul {
     quantifiables et modifiables par l'attribut max.
      */
 
-    private int max = 10;
+    private int max = 9;
     private int firstNumber;
     private int secondNumber;
     private Type_Calcul type_calcul;
@@ -17,7 +19,10 @@ public class Calcul {
     }
 
     public Calcul(Type_Calcul type_calcul) {
+        Random random = new Random(System.currentTimeMillis());
         this.type_calcul = type_calcul;
+        this.firstNumber= random.nextInt(max)+1;
+        this.secondNumber=random.nextInt(max)+1;
     }
 
     public Calcul(int max, Type_Calcul type_calcul) {

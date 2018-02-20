@@ -15,10 +15,14 @@ public class Qcm {
     private Long id;
     private List<Calcul> calculList;
     private List<Integer> responseList;
-    private int difficulty;
-    private int nbCalculs=10;
+    private int difficulty=1;
+    private int nbCalculs=1;
 
     public Qcm() {
+        for(int i=0;i<this.nbCalculs;i++) {
+            this.calculList.add(new Calcul(Type_Calcul.Addition));
+            this.responseList.add(null);
+        }
     }
 
     public Qcm(int difficulty) {

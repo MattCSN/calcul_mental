@@ -1,11 +1,12 @@
-package calcul.core.dao;
+package calcul.core.service;
 
+import calcul.core.dao.QcmDAO;
 import calcul.core.entity.Qcm;
-import org.springframework.data.jpa.repository.JpaRepository;
+import calcul.core.service.impl.QcmServiceImpl;
 
 import java.util.List;
 
-public interface QcmDAO extends JpaRepository<Qcm,Long> {
+public interface QcmService {
 
     Qcm getQCM();
 
