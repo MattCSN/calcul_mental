@@ -1,7 +1,12 @@
 ﻿package calcul.core.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
+@Entity
 public class Qcm {
 
     /*
@@ -10,7 +15,11 @@ public class Qcm {
     ainsi qu'une liste de réponses données (utilisée pour comparer au calculs proposés à l'écran)
     (dans le cas d'une catégorie fixe par QCM; sinon il faut associer une catégorie aux calculs directement)
      */
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private List<Calcul> calculList;
     private List<Integer> responseList;
     private int difficulty=1;
