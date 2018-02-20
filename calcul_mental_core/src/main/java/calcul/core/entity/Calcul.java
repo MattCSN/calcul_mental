@@ -1,7 +1,8 @@
 package calcul.core.entity;
 
-import java.util.Random;
+import javax.persistence.Entity;
 
+@Entity
 public class Calcul {
 
     /*
