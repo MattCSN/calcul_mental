@@ -2,15 +2,12 @@ package calcul.web;
 
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import yncrea.pw06.core.config.AppConfig;
-import yncrea.pw06.core.config.DBConfig;
+import calcul.core.config.*;
 import yncrea.pw06.web.config.WSConfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-
-import calcul.web.config.WebConfig;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

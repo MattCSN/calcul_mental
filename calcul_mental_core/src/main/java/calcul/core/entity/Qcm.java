@@ -1,7 +1,5 @@
 ﻿package calcul.core.entity;
 
-import com.sun.javafx.image.IntPixelGetter;
-
 import java.util.List;
 
 public class Qcm {
