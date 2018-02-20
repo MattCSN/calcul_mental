@@ -1,7 +1,7 @@
-package manager;
+package calcul.core.manager;
 
-import dao.CalculDAO;
-import dao.impl.CalculDAOImpl;
+import calcul.core.dao.impl.CalculDAOImpl;
+import calcul.core.dao.CalculDAO;
 
 import java.util.List;
 
