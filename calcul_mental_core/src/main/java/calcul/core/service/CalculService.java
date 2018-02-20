@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CalculService {
 
-    List<Calcul> getListCalcul();
+    static List<Calcul> getListCalcul();
      Calcul getCalcul();
 }
