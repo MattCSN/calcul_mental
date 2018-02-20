@@ -1,5 +1,6 @@
 package calcul.web.controller;
 
+import calcul.core.entity.Qcm;
 import calcul.core.service.QcmService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,4 +16,12 @@ public class QcmController {
 
     @Inject
     private QcmService qcmService;
+
+
+    @RequestMapping("/")
+    public Qcm getQCM(){
+        LOGGER.debug("Je vais chercher un QCM");
+        Qcm qcm= new Qcm();
+        return qcm;
+    }
 }
