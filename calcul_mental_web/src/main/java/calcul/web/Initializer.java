@@ -10,6 +10,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 
+import calcul.web.config.WebConfig;
+
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override

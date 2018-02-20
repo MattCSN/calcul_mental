@@ -1,4 +1,4 @@
-package calcul.core.entity;
+﻿package calcul.core.entity;
 
 import com.sun.javafx.image.IntPixelGetter;
 
@@ -16,6 +16,7 @@ public class Qcm {
     private List<Calcul> calculList;
     private List<Integer> responseList;
     private int difficulty=1;
+
     private int nbCalculs=1;
 
     public Qcm() {
