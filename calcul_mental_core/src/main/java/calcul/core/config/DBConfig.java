@@ -37,7 +37,6 @@ import java.util.Properties;
             return dataSource;
         }
 
-
         @Bean
         public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
             return entityManagerFactory.createEntityManager();
