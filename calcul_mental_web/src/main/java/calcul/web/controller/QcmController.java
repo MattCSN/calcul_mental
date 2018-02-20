@@ -22,7 +22,6 @@ public class QcmController {
     public Qcm getQCM(){
         LOGGER.debug("Je vais chercher un QCM");
         Qcm qcm= new Qcm();
-
         return qcm;
     }
 

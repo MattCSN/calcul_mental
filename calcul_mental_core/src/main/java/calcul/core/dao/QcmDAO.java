@@ -12,4 +12,6 @@ public interface QcmDAO extends JpaRepository<Qcm,Long> {
     List<Integer> saveResult(Long id);
 
     void saveQcm(Qcm qcm);
+
+
 }
