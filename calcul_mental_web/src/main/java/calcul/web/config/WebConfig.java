@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "yncrea.pw04.web.controller")
+@ComponentScan(basePackages = "calcul.web.controller")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override

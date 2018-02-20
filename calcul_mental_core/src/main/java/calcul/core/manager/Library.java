@@ -1,3 +1,4 @@
+/*
 package calcul.core.manager;
 
 import calcul.core.dao.impl.CalculDAOImpl;
@@ -52,3 +53,4 @@ public class Library {
     }
     public List<Integer> generateListRandom(int result){return calculDAO.generateListRandom(result);}
 }
+*/

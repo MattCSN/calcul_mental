@@ -1,8 +1,9 @@
 package calcul.web;
 
+import calcul.core.config.AppConfig;
+import calcul.core.config.DBConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import yncrea.pw04.config.AppConfig;
-import yncrea.pw04.config.DBConfig;
+
 import calcul.web.config.WebConfig;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
