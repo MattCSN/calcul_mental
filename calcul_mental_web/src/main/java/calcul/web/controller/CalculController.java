@@ -23,15 +23,4 @@ public class CalculController {
         @Inject
         private CalculService calculService;
 
-        @RequestMapping("/list")
-        public String getListOf(ModelMap model){
-            LOGGER.debug("J'affiche la liste des étudiants");
-            final List<Calcul> all = CalculService.getListCalcul();
-            model.addAttribute("students",all);
-            return "studentsList";
-        }
-
-
-    }
-
 }
