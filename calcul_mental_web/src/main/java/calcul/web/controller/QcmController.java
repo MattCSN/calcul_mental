@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.inject.Inject;
 
-@RequestMapping("/")
+@RequestMapping("/calculator")
 @Controller
 public class QcmController {
     private static final Logger LOGGER = LoggerFactory.getLogger(QcmController.class);
