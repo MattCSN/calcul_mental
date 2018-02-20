@@ -12,7 +12,7 @@ public class CalculController {
 
         private static final Logger LOGGER = LoggerFactory.getLogger(CalculController.class);
 
-        @Inject
-        private CalculService calculService;
+        //@Inject
+        //private CalculService calculService;
 
 }
