@@ -16,7 +16,7 @@ public class Qcm {
     private List<Calcul> calculList;
     private List<Integer> responseList;
     private int difficulty;
-    private int nbCalculs=10;
+    private int nbCalculs=1;
 
     public Qcm() {
     }
