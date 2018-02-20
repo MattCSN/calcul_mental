@@ -24,4 +24,19 @@ public class CalculatorServlet extends AbstractGenericServlet {
 
         templateEngine.process("calculMentalHTML", context, resp.getWriter());
     }
+
+/*    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String identifiantSaisi = request.getParameter("identifiant");
+        String motDePasseSaisi = request.getParameter("motdepasse");
+        try {
+            if(utilisateursAutorises.containsKey(identifiantSaisi) && MotDePasseUtils.validerMotDePasse(motDePasseSaisi, utilisateursAutorises.get(identifiantSaisi))) {
+                request.getSession().setAttribute("utilisateurConnecte", identifiantSaisi);
+            }
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        response.sendRedirect("connexion");
+    }*/
 }
