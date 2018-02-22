@@ -1,9 +1,6 @@
 
 package calcul.core.entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -20,8 +17,14 @@ public class Qcm {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private Calcul calcul;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "calcul")
     private List<Calcul> calculList;
+
     private List<Integer> responseList;
+
     private int difficulty=1;
 
     private int nbCalculs=1;
@@ -73,4 +76,5 @@ public class Qcm {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+
 }
