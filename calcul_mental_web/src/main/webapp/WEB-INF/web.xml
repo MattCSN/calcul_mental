@@ -4,7 +4,7 @@
 
     <servlet>
         <servlet-name>Servlet Index</servlet-name>
-        <servlet-class>yncrea.web.servlets.WebConfig</servlet-class>
+        <servlet-class>calcul.web.config.WebConfig</servlet-class>
     </servlet>
     
     <servlet-mapping>
