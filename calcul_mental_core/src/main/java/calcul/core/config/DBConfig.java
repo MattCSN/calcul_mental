@@ -20,6 +20,7 @@ import java.util.Properties;
     @EnableJpaRepositories(basePackages = "calcul.core.dao")
     public class DBConfig {
 
+        //Test
         @Bean(destroyMethod = "close")
         public DataSource dataSource(Properties dbProperties) {
             BoneCPDataSource dataSource = new BoneCPDataSource();
