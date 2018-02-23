@@ -1,35 +1,30 @@
 package calcul.web.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
-import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-@Configuration
-@EnableWebMvc
-@ComponentScan(basePackages = "calcul.web.controller")
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig extends HttpServlet{
+
+    private static final long serialVersionUID = 1L;
+
+
+    public WebConfig() {
+    }
 
     @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+    public void init() throws ServletException {
+        super.init();
     }
 
-    @Bean
-    public VelocityConfigurer configurer(){
-        VelocityConfigurer configurer = new VelocityConfigurer();
-        configurer.setResourceLoaderPath("/WEB-INF/velocity");
-        return configurer;
-    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    @Bean
-    public VelocityViewResolver resolver(){
-        VelocityViewResolver resolver = new VelocityViewResolver();
-        resolver.setSuffix(".vm");
-        return resolver;
+        RequestDispatcher view = request.getRequestDispatcher("/src/main/webapp/index.html");
+        view.forward(request,response);
+
     }
 }
