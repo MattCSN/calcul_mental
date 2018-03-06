@@ -8,24 +8,87 @@ function mathtutor($scope) {
         $scope.noOfIceCreams = 0;
         $scope.getNewQuestion();
     }
+    $scope.getRandomIndex = function(length){
+        return Math.floor(Math.random() * length);
+    }
+
+
+    // -> Fisher–Yates shuffle algorithm
+    var shuffleArray = function(array) {
+        var m = array.length, t, i;
+
+        // While there remain elements to shuffle
+        while (m) {
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+
+        return array;
+    }
 
     $scope.getNewQuestion = function () {
-        $scope.n1 = Math.floor(Math.random() * $scope.maxNumber);
-        $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
-        $scope.question = $scope.n1 + " + " + $scope.n2+" = ?";
+        $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+        $scope.n2 = Math.floor(Math.random() * $scope.maxNumber)+1;
+        $scope.question = $scope.n1 + " + " + $scope.n2;
         $scope.variable1= Math.floor(Math.random() * $scope.maxNumber);
-        $scope.variable2= $scope.variable1-1;
-        $scope.variable3= $scope.variable2+2;
-        $scope.userAnswer = $scope.n1 + $scope.n2;
+        $scope.variable2= Math.floor(Math.random() * $scope.maxNumber);
+        $scope.variable3= Math.floor(Math.random() * $scope.maxNumber);
         $scope.answer = $scope.n1 + $scope.n2;
+
+        $scope.answersforqcm= [$scope.variable1,$scope.variable2,$scope.variable3,$scope.answer];
+        $scope.tests= shuffleArray($scope.answersforqcm);
+
+        $scope.userAnswer = "";
     }
     $scope.onVoiceAnswer = function () {
         if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
             $scope.onRightAnswer();
         }
     }
-    $scope.onSubmitAnswer = function () {
-        if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
+    $scope.onSubmitAnswer = function (event) {
+
+            console.log(event);
+            $scope.inputValue = event.target.innerText;
+
+        if ($scope.inputValue && parseInt($scope.inputValue) == $scope.answer) {
+            $scope.onRightAnswer();
+        } else {
+            $scope.onWrongAnswer();
+        }
+    }
+    $scope.onSubmitAnswer2 = function (event) {
+
+        console.log(event);
+        $scope.inputValue2 = event.target.innerText;
+
+        if ($scope.inputValue2 && parseInt($scope.inputValue2) == $scope.answer) {
+            $scope.onRightAnswer();
+        } else {
+            $scope.onWrongAnswer();
+        }
+    }
+    $scope.onSubmitAnswer3 = function (event) {
+
+        console.log(event);
+        $scope.inputValue3 = event.target.innerText;
+
+        if ($scope.inputValue3 && parseInt($scope.inputValue3) == $scope.answer) {
+            $scope.onRightAnswer();
+        } else {
+            $scope.onWrongAnswer();
+        }
+    }
+    $scope.onSubmitAnswer4 = function (event) {
+
+        console.log(event);
+        $scope.inputValue4 = event.target.innerText;
+
+        if ($scope.inputValue4 && parseInt($scope.inputValue4) == $scope.answer) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
