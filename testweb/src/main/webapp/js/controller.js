@@ -33,7 +33,7 @@ function mathtutor($scope) {
 
     $scope.getNewQuestion = function () {
         $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
-        $scope.n2 = Math.floor(Math.random() * $scope.maxNumber)+1;
+        $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
         $scope.question = $scope.n1 + " + " + $scope.n2;
         $scope.variable1= Math.floor(Math.random() * $scope.maxNumber);
         $scope.variable2= Math.floor(Math.random() * $scope.maxNumber);
