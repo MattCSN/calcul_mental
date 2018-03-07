@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/calcul_mental.iml" filepath="$PROJECT_DIR$/calcul_mental.iml" />
       <module fileurl="file://$PROJECT_DIR$/calcul_mental_core/calcul_mental_core.iml" filepath="$PROJECT_DIR$/calcul_mental_core/calcul_mental_core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/calcul_mental_web/testweb.iml" filepath="$PROJECT_DIR$/calcul_mental_web/testweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calcul_mental_web/calcul_mental_web.iml" filepath="$PROJECT_DIR$/calcul_mental_web/calcul_mental_web.iml" />
     </modules>
   </component>
 </project>
