@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title>Calcul Mental</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/mathtutor.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!--Angular.js-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/controller.js"></script>
+    <style>
+        body {
+            background-color: darkslategrey;
+        }
+
+        .blackboard {
+            background-color: darkgreen;
+        }
+
+        li a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-left: 100px;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .col-centered{
+            float: none;
+            margin: 0 auto;
+        }
+
+        .btn{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .agrandir{
+            padding-bottom: 40px;
+            padding-top: 40px;
+            padding-left: 70px;
+            padding-right: 70px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+</head>
+
+<body ng-init="reloadPage()" ng-controller="mathtutor">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 visible-xs">
+                <div class="game-title">
+                    <p class="text-center">{{gametitle}}</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <img src="images/Theheart.png" class="apple apple-lives" ng-repeat="a in range(noOfApples) track by $index">
+            </div>
+            <div class="col-sm-4 hidden-xs">
+                <div class="game-title">
+                    <p class="text-center">{{gametitle}}</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="panel panel-default blackboard-outer">
+                <div class="panel-body blackboard">
+
+                    <p class="question text-center">{{question}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container answer-row">
+            <div class="row">
+
+                <div class="col-lg-11 col-centered">
+                    <!--<div ng-init="items = [
+            {name:'Poke1', count:0, position : 'Réponse 1 :' },
+            {name:'Poke2', count:0, position : 'Réponse 2 :' },
+            {name:'Poke3', count:0, position : 'Réponse 3 :' },
+            {name:'Poke4', count:0, position : 'Réponse 4 :' }
+            ]">-->
+                        <div>
+                            <ul>
+                                <li>
+                                <!--<li ng-repeat="item in items">-->
+                                    <!-- <span>{{item.position}}</span> -->
+                                    <!--<button ng-click="increment(item);" class="btn btn-default"><a >{{item.name}}</a></button>-->
+
+                                             <button  ng-value="{{tests[0]}}"  ng-click="onSubmitAnswer($event)" class="btn btn-default agrandir">{{tests[0]}}</button>
+                            <button  ng-value="{{tests[1]}}"  ng-click="onSubmitAnswer2($event)" class="btn btn-default agrandir">{{tests[1]}}</button>
+                            <button  ng-value="{{tests[2]}}"  ng-click="onSubmitAnswer3($event)" class="btn btn-default agrandir">{{tests[2]}}</button>
+                            <button  ng-value="{{tests[3]}}"  ng-click="onSubmitAnswer4($event)" class="btn btn-default agrandir">{{tests[3]}}</button>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+<!--
+                <div class="col-sm-1 hidden-xs">
+                </div>
+                <div class="col-sm-6 col-xs-8">
+                    <input type="text" class="form-control" id="answer" placeholder="Answer here!!!!" ng-model="userAnswer" x-webkit-speech onwebkitspeechchange="onVoiceAnswer()">
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    <button class="btn btn-primary center-block full-width" ng-click="onSubmitAnswer()" id="submitbutton">Submit</button>
+                </div>
+                <div class="hidden">
+                    <button class="btn btn-primary" ng-click="onVoiceAnswer()" id="voicesubmitbutton">Voice Submit</button>
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">Skip</button>
+                </div>
+-->
+
+            </div>
+        </div>
+    </div>
+    <!--Modals-->
+    <div class="modal fade" id="lost-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Oh :(</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>Perdu!</h2>
+                    <p>Recommencer?....</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reloadPage()">Recommencer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script>
+        $("#answer").keyup(function(event) {
+            if (event.keyCode == 13) {
+                $("#submitbutton").click();
+            }
+        });
+
+        function onVoiceAnswer() {
+            $('#voicesubmitbutton').click();
+        }
+    </script>
+</body>
+
+</html>
