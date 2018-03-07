@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MathTutor-master.iml" filepath="$PROJECT_DIR$/MathTutor-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testcore/testcore.iml" filepath="$PROJECT_DIR$/testcore/testcore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testweb/testweb.iml" filepath="$PROJECT_DIR$/testweb/testweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calcul_mental.iml" filepath="$PROJECT_DIR$/calcul_mental.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calcul_mental_core/calcul_mental_core.iml" filepath="$PROJECT_DIR$/calcul_mental_core/calcul_mental_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calcul_mental_web/testweb.iml" filepath="$PROJECT_DIR$/calcul_mental_web/testweb.iml" />
     </modules>
   </component>
 </project>
