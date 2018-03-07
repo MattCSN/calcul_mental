@@ -3,45 +3,37 @@
 ## Intro
 ###Goals of the project
 There are several goals to this project:
-* Learning to work in an Agile environment with a team of students
-* Using the AngularJS, EE4J, MVC and Spring technologies
-* Getting an real experience of group work
+* Learning to work in an *Agile* environment with a team of students
+* Using the *AngularJS*, *EE4J*, *MVC* and *Spring* technologies
+* Getting a real experience of group work for a client
 
 ###Description of the WebApp
 The app is an easy and fun way to learn calculus to young children, and it runs like a game:
 * The player has 3 lives 
-* 
+* There are several difficulty levels (ranging from easy sums to difficult divisions)
+* A way to track progress and past *tests* can be found for any logged user
 
-## DB 
+##Demo
+The Angular and front end has been reused, mostly, from another GitHub project for which a live demo can be found [here](http://sumitgouthaman.github.io/MathTutor/).
 
+The full working demo will be up on Heroku second trimester of 2018. 
 
 ## Dependencies
-Create a new Maven module called **pw04-web**. Its packaging is `war`
-
-For this module, you have to declare, in the `pom.xml` file, the following dependencies.
+You have to make sure that the modules have the proper dependencies, listed bellow
+### Module calcul_mental_core
+For this module, in the `pom.xml` file, you must have, it's packaging should be war:
 
 |groupId   |artifactId      |  version | scope|
 |----------|-------------|------|---|
-| ${project.groupId | pw04-core | ${project.version}||
+| ${project.groupId |  | ${project.version}||
 | org.springframework | spring-webmvc | 4.2.9.RELEASE | 
 | org.springframework | spring-context-support | 4.2.9.RELEASE || 
-| org.apache.velocity| velocity | 1.7 | |
-| org.webjars | bootstrap | 3.3.7-1 | |
 | ch.qos.logback | logback-classic | 1.1.8 | |
 | javax.inject | javax.inject | 1 |
 | javax.servlet | javax.servlet-api | 3.1.0 | provided 
 
-For this module, we won't write any `web.xml`  file, because everything will be configured with Java
-
-
-### WebConfig
-
-### StudentController
+## DB 
 
 ## Deployment
 
 ## Logs
-
-###Demo:  
-A live demo can be found [here](http://sumitgouthaman.github.io/MathTutor/)  
-
