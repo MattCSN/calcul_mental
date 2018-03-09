@@ -12,6 +12,7 @@
     <modules>
         <module>calcul_mental_core</module>
         <module>calcul_mental_web</module>
+        <module>calcul_mental_assets</module>
     </modules>
 
     <build>
