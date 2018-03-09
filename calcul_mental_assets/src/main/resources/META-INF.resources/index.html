@@ -168,6 +168,26 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <div class="modal fade" id="end-run-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Bravo, tu as r&eacute;ussi le niveau!</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>Score final :</h2>
+                    <p class="final-score" ng-bind-html="scoreText"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reloadPage()">Recommencer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
     <!-- /.modal -->
     <script>
         $("#answer").keyup(function(event) {

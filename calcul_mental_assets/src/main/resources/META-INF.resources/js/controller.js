@@ -4,6 +4,7 @@ function mathtutor($scope) {
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.reloadPage = function () {
+        $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfIceCreams = 0;
         $scope.getNewQuestion();
@@ -97,7 +98,13 @@ function mathtutor($scope) {
 
     $scope.onRightAnswer = function () {
         $scope.noOfIceCreams++;
-        $scope.getNewQuestion();
+        $scope.numberOfQuestions++;
+        if($scope.numberOfQuestions>=10){
+            $('#end-run-modal').modal();
+            $('#final-score').innerHTML = ''+$scope.noOfIceCreams+' / '+
+                    $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+        }
+        else{$scope.getNewQuestion();}
     }
 
     $scope.onWrongAnswer = function () {
