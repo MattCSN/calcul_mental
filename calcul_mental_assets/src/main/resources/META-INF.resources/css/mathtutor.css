@@ -11,7 +11,7 @@ body {
     color: #B5022F;
     font-weight: bold;
 }
-.game-title {
+.game-title, .progression {
     font-family: 'Handlee', cursive;
     font-size: 45px;
     color: white;

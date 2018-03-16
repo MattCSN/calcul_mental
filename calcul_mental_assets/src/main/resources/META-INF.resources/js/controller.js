@@ -1,5 +1,7 @@
 function mathtutor($scope) {
     $scope.gametitle = "Bienvenue";
+    $scope.compteurProgressBar = 0;
+    $scope.minNumber = 1;
     $scope.maxNumber = 10;
     $scope.n1 = 0;
     $scope.n2 = 0;
@@ -33,13 +35,35 @@ function mathtutor($scope) {
     }
 
     $scope.getNewQuestion = function () {
-        $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
-        $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
-        $scope.question = $scope.n1 + " + " + $scope.n2;
-        $scope.variable1= Math.floor(Math.random() * $scope.maxNumber);
-        $scope.variable2= Math.floor(Math.random() * $scope.maxNumber);
-        $scope.variable3= Math.floor(Math.random() * $scope.maxNumber);
-        $scope.answer = $scope.n1 + $scope.n2;
+        $scope.answer = 11;
+        $scope.variable1 = 0;
+        $scope.variable2 = 0;
+        $scope.variable3 = 0;
+        while ($scope.answer > 10
+        || $scope.variable1 == $scope.variable2
+        || $scope.variable1 == $scope.variable3
+        || $scope.variable2 == $scope.variable3
+        || $scope.answer == $scope.variable1
+        || $scope.answer == $scope.variable2
+        || $scope.answer == $scope.variable3 )
+        {
+            $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+            $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
+            $scope.question = $scope.n1 + " + " + $scope.n2;
+            $scope.variable1= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
+            $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
+            $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
+            $scope.answer = $scope.n1 + $scope.n2;
+        }
+        //Progress bar
+        if ($scope.compteurProgressBar == 10){
+            $scope.compteurProgressBar = 0;
+            $scope.progressBar = "Question : " + $scope.compteurProgressBar + "/ 10"
+        }else{
+            $scope.compteurProgressBar ++;
+            $scope.progressBar = "Question : " + $scope.compteurProgressBar + "/ 10"
+        }
+
 
         $scope.answersforqcm= [$scope.variable1,$scope.variable2,$scope.variable3,$scope.answer];
         $scope.tests= shuffleArray($scope.answersforqcm);
