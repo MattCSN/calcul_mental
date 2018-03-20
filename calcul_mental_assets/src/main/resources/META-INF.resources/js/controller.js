@@ -8,7 +8,7 @@ function mathtutor($scope) {
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
-        $scope.noOfIceCreams = 0;
+        $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
     }
     $scope.getRandomIndex = function(length){
@@ -121,17 +121,19 @@ function mathtutor($scope) {
     }
 
     $scope.onRightAnswer = function () {
-        $scope.noOfIceCreams++;
+
+        $scope.noOfGoodAnswers++;
         $scope.numberOfQuestions++;
         if($scope.numberOfQuestions>=10){
             $('#end-run-modal').modal();
-            $('#final-score').innerHTML = ''+$scope.noOfIceCreams+' / '+
+            $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
         }
         else{$scope.getNewQuestion();}
     }
 
     $scope.onWrongAnswer = function () {
+        $scope.noOfGoodAnswers--;
         $scope.noOfApples--;
         if ($scope.noOfApples <= 0) {
             $("#lost-modal").modal();
@@ -139,7 +141,7 @@ function mathtutor($scope) {
     }
     $scope.skipQuestion = function () {
         $scope.getNewQuestion();
-        $scope.noOfIceCreams--;
+        $scope.noOfGoodAnswers--;
     }
     $scope.range = function (num) {
         return new Array(num);
