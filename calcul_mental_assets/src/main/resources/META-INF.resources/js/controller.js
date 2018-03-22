@@ -73,21 +73,28 @@ function mathtutor($scope) {
 
         $scope.userAnswer = "";
 
+        document.getElementById('btn1').disabled = '';
+        document.getElementById('btn2').disabled = '';
+        document.getElementById('btn3').disabled = '';
+        document.getElementById('btn4').disabled = '';
+
     }
     $scope.onVoiceAnswer = function () {
         if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
             $scope.onRightAnswer();
         }
     }
+
     $scope.onSubmitAnswer = function (event) {
 
-            console.log(event);
-            $scope.inputValue = event.target.innerText;
+        console.log(event);
+        $scope.inputValue = event.target.innerText;
 
         if ($scope.inputValue && parseInt($scope.inputValue) == $scope.answer) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
+            document.getElementById('btn1').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer2 = function (event) {
@@ -99,6 +106,7 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
+            document.getElementById('btn2').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer3 = function (event) {
@@ -110,6 +118,7 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
+            document.getElementById('btn3').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer4 = function (event) {
@@ -121,6 +130,7 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
+            document.getElementById('btn4').disabled = 'disabled';
         }
     }
 
@@ -155,4 +165,11 @@ function mathtutor($scope) {
     $scope.range = function (num) {
         return new Array(num);
     }
+
+
+    ///
+
+
+
+
 }
