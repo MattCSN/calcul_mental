@@ -161,15 +161,13 @@ function mathtutor($scope) {
     $scope.skipQuestion = function () {
         $scope.getNewQuestion();
         $scope.noOfGoodAnswers--;
+        $scope.noOfApples--;
+        if ($scope.noOfApples <= 0) {
+            $("#lost-modal").modal();
+        }
     }
     $scope.range = function (num) {
         return new Array(num);
     }
-
-
-    ///
-
-
-
 
 }
