@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Named
-@Path("/users")
+@Path("/")
 public class UtilisateurController implements RestController{
 
     private static final Logger logger = LoggerFactory.getLogger(UtilisateurController.class);

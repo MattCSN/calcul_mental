@@ -17,11 +17,7 @@ import java.util.Properties;
         public Properties dbProperties() throws IOException, URISyntaxException {
 
             Properties props = new Properties();
-            props.setProperty("driverClass", "com.mysql.jdbc.Driver");
-            props.setProperty("jdbcUrl", "jdbc:mysql://localhost:3306/calcul_mental");
-            props.setProperty("username", "root");
-            props.setProperty("password", "0000");
-
+            props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties"));
             return props;
         }
     }

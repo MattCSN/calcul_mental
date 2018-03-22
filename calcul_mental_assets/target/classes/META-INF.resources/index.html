@@ -16,58 +16,7 @@
     <!--Angular.js-->
     <script src="js/angular.min.js"></script>
     <script src="js/controller.js"></script>
-    <style>
-        body {
-            background-color: darkslategrey;
-        }
 
-        .blackboard {
-            background-color: darkgreen;
-        }
-
-        li a {
-            display: block;
-            text-align: center;
-            padding: 16px;
-            text-decoration: none;
-        }
-
-        li {
-            float: left;
-        }
-
-        ul {
-            list-style-type: none;
-            margin-left: 100px;
-            overflow: hidden;
-            padding: 10px;
-        }
-
-        .col-centered{
-            float: none;
-            margin: 0 auto;
-        }
-
-        .btn{
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        .agrandir{
-            padding-bottom: 40px;
-            padding-top: 40px;
-            padding-left: 70px;
-            padding-right: 70px;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
-    </style>
 </head>
 
 <body ng-init="reloadPage()" ng-controller="mathtutor">
@@ -79,15 +28,24 @@
                 </div>
             </div>
             <div class="col-sm-4 col-xs-6">
+                <!--Login sans mot de passe-->
+                <div class="login">
+                    <p class="text-left"><input type="text" ng-model="nameLogin" placeholder="Connecte-toi !"></p>
+                </div>
                 <img src="images/Theheart.png" class="apple apple-lives" ng-repeat="a in range(noOfApples) track by $index">
             </div>
             <div class="col-sm-4 hidden-xs">
                 <div class="game-title">
-                    <p class="text-center">{{gametitle}}</p>
+                    <p class="text-center">{{gametitle}} {{nameLogin}}</p>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-6">
-
+                <div class="progression">
+                    <p class="text-right">{{progressBar}}</p>
+                </div>
+                <div class="progression">
+                    <p class="text-right">Niveau : {{lvl}}</p>
+                </div>
             </div>
         </div>
 
@@ -116,17 +74,20 @@
                                     <!-- <span>{{item.position}}</span> -->
                                     <!--<button ng-click="increment(item);" class="btn btn-default"><a >{{item.name}}</a></button>-->
 
-                                             <button  ng-value="{{tests[0]}}"  ng-click="onSubmitAnswer($event)" class="btn btn-default agrandir">{{tests[0]}}</button>
-                            <button  ng-value="{{tests[1]}}"  ng-click="onSubmitAnswer2($event)" class="btn btn-default agrandir">{{tests[1]}}</button>
-                            <button  ng-value="{{tests[2]}}"  ng-click="onSubmitAnswer3($event)" class="btn btn-default agrandir">{{tests[2]}}</button>
-                            <button  ng-value="{{tests[3]}}"  ng-click="onSubmitAnswer4($event)" class="btn btn-default agrandir">{{tests[3]}}</button>
-
+                                    <button  ng-value="{{tests[0]}}" id="btn1" ng-click="onSubmitAnswer($event)" class="btn btn-default agrandir">{{tests[0]}}</button>
+                                    <button  ng-value="{{tests[1]}}"  id="btn2" ng-click="onSubmitAnswer2($event)" class="btn btn-default agrandir">{{tests[1]}}</button>
+                                    <button  ng-value="{{tests[2]}}"  id="btn3" ng-click="onSubmitAnswer3($event)" class="btn btn-default agrandir">{{tests[2]}}</button>
+                                    <button  ng-value="{{tests[3]}}"  id="btn4" ng-click="onSubmitAnswer4($event)" class="btn btn-default agrandir">{{tests[3]}}</button>
                                 </li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
+
+            <div class="col-sm-2 hidden-xs">
+                <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">Skip</button>
+            </div>
 <!--
                 <div class="col-sm-1 hidden-xs">
                 </div>
@@ -158,6 +119,26 @@
                 <div class="modal-body">
                     <h2>Perdu!</h2>
                     <p>Recommencer?....</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reloadPage()">Recommencer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="end-run-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Bravo, tu as r&eacute;ussi le niveau!</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>Score final : {{noOfGoodAnswers}}</h2>
+                    <p class="final-score" ng-bind-html="scoreText"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
