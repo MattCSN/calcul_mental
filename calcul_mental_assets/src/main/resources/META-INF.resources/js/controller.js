@@ -5,12 +5,17 @@ function mathtutor($scope) {
     $scope.maxNumber = 10;
     $scope.n1 = 0;
     $scope.n2 = 0;
+    $scope.url=null;
+
+
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
+        $scope.url=null;
     }
+
     $scope.getRandomIndex = function(length){
         return Math.floor(Math.random() * length);
     }
@@ -70,11 +75,13 @@ function mathtutor($scope) {
 
         $scope.userAnswer = "";
     }
+
     $scope.onVoiceAnswer = function () {
         if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
             $scope.onRightAnswer();
         }
     }
+
     $scope.onSubmitAnswer = function (event) {
 
             console.log(event);
@@ -121,15 +128,22 @@ function mathtutor($scope) {
     }
 
     $scope.onRightAnswer = function () {
-
         $scope.noOfGoodAnswers++;
         $scope.numberOfQuestions++;
+
         if($scope.numberOfQuestions>=10){
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
         }
-        else{$scope.getNewQuestion();}
+        else{
+            var bad_gif = Math.floor(Math.random()*2);
+            if (bad_gif==0)
+                $scope.url="images/good_boy.gif"
+            else
+                $scope.url="images/good_girl.gif"
+            $scope.getNewQuestion();
+        }
     }
 
     $scope.onWrongAnswer = function () {
@@ -137,8 +151,15 @@ function mathtutor($scope) {
         $scope.noOfApples--;
         if ($scope.noOfApples <= 0) {
             $("#lost-modal").modal();
+            $scope.url=null
         }
+        var bad_gif = Math.floor(Math.random()*2);
+        if (bad_gif==0)
+            $scope.url="images/bad_girl.gif"
+        else
+            $scope.url="images/bad_boy.gif"
     }
+
     $scope.skipQuestion = function () {
         $scope.getNewQuestion();
         $scope.noOfGoodAnswers--;
