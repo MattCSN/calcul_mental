@@ -5,12 +5,19 @@ function mathtutor($scope) {
     $scope.maxNumber = 10;
     $scope.n1 = 0;
     $scope.n2 = 0;
+    $scope.url=null;
+    $scope.noOfGoodAnswers=0;
+    $scope.numberOfQuestions=0;
+
+
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
+        $scope.url=null;
     }
+
     $scope.getRandomIndex = function(length){
         return Math.floor(Math.random() * length);
     }
@@ -39,6 +46,8 @@ function mathtutor($scope) {
         $scope.variable1 = 0;
         $scope.variable2 = 0;
         $scope.variable3 = 0;
+        //$scope.url=null;
+
         while ($scope.answer > 10
         || $scope.variable1 == $scope.variable2
         || $scope.variable1 == $scope.variable3
@@ -54,6 +63,7 @@ function mathtutor($scope) {
             $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
             $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
             $scope.answer = $scope.n1 + $scope.n2;
+
         }
         //Progress bar
         if ($scope.compteurProgressBar == 10){
@@ -68,13 +78,16 @@ function mathtutor($scope) {
         $scope.answersforqcm= [$scope.variable1,$scope.variable2,$scope.variable3,$scope.answer];
         $scope.tests= shuffleArray($scope.answersforqcm);
 
+
         $scope.userAnswer = "";
     }
+
     $scope.onVoiceAnswer = function () {
         if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
             $scope.onRightAnswer();
         }
     }
+
     $scope.onSubmitAnswer = function (event) {
 
             console.log(event);
@@ -121,16 +134,28 @@ function mathtutor($scope) {
     }
 
     $scope.onRightAnswer = function () {
+        var good_gif = Math.floor(Math.random()*2);
+
+        if (good_gif==0)
+            $scope.url="images/good_girl.gif";
+        else
+            $scope.url="images/good_boy.gif";
+
 
         $scope.noOfGoodAnswers++;
         $scope.numberOfQuestions++;
+
         if($scope.numberOfQuestions>=10){
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+                $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+            $scope.url=null
         }
         else{$scope.getNewQuestion();}
     }
+
+
 
     $scope.onWrongAnswer = function () {
         $scope.noOfGoodAnswers--;
@@ -138,7 +163,15 @@ function mathtutor($scope) {
         if ($scope.noOfApples <= 0) {
             $("#lost-modal").modal();
         }
+        var bad_gif = Math.floor(Math.random()*2);
+        if (bad_gif==0)
+            $scope.url="images/bad_girl.gif";
+        else
+            $scope.url="images/bad_boy.gif";
     }
+
+
+
     $scope.skipQuestion = function () {
         $scope.getNewQuestion();
         $scope.noOfGoodAnswers--;
