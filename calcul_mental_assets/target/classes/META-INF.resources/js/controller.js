@@ -5,15 +5,19 @@ function mathtutor($scope) {
     $scope.maxNumber = 10;
     $scope.n1 = 0;
     $scope.n2 = 0;
-    $scope.lvl = 0;
+    $scope.url=null;
+    $scope.noOfGoodAnswers=0;
+    $scope.numberOfQuestions=0;
+
 
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
-
+        $scope.url=null;
     }
+
     $scope.getRandomIndex = function(length){
         return Math.floor(Math.random() * length);
     }
@@ -42,6 +46,8 @@ function mathtutor($scope) {
         $scope.variable1 = 0;
         $scope.variable2 = 0;
         $scope.variable3 = 0;
+        //$scope.url=null;
+
         while ($scope.answer > 10
         || $scope.variable1 == $scope.variable2
         || $scope.variable1 == $scope.variable3
@@ -57,6 +63,7 @@ function mathtutor($scope) {
             $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
             $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
             $scope.answer = $scope.n1 + $scope.n2;
+
         }
         //Progress bar
         if ($scope.compteurProgressBar == 10){
@@ -71,14 +78,10 @@ function mathtutor($scope) {
         $scope.answersforqcm= [$scope.variable1,$scope.variable2,$scope.variable3,$scope.answer];
         $scope.tests= shuffleArray($scope.answersforqcm);
 
+
         $scope.userAnswer = "";
-
-        document.getElementById('btn1').disabled = '';
-        document.getElementById('btn2').disabled = '';
-        document.getElementById('btn3').disabled = '';
-        document.getElementById('btn4').disabled = '';
-
     }
+
     $scope.onVoiceAnswer = function () {
         if ($scope.userAnswer && parseInt($scope.userAnswer) == $scope.answer) {
             $scope.onRightAnswer();
@@ -87,14 +90,13 @@ function mathtutor($scope) {
 
     $scope.onSubmitAnswer = function (event) {
 
-        console.log(event);
-        $scope.inputValue = event.target.innerText;
+            console.log(event);
+            $scope.inputValue = event.target.innerText;
 
         if ($scope.inputValue && parseInt($scope.inputValue) == $scope.answer) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
-            document.getElementById('btn1').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer2 = function (event) {
@@ -106,7 +108,6 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
-            document.getElementById('btn2').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer3 = function (event) {
@@ -118,7 +119,6 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
-            document.getElementById('btn3').disabled = 'disabled';
         }
     }
     $scope.onSubmitAnswer4 = function (event) {
@@ -130,25 +130,32 @@ function mathtutor($scope) {
             $scope.onRightAnswer();
         } else {
             $scope.onWrongAnswer();
-            document.getElementById('btn4').disabled = 'disabled';
         }
     }
 
     $scope.onRightAnswer = function () {
+        var good_gif = Math.floor(Math.random()*2);
+
+        if (good_gif==0)
+            $scope.url="images/good_girl.gif";
+        else
+            $scope.url="images/good_boy.gif";
+
 
         $scope.noOfGoodAnswers++;
         $scope.numberOfQuestions++;
+
         if($scope.numberOfQuestions>=10){
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+                $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+            $scope.url=null
         }
         else{$scope.getNewQuestion();}
-        /*Gestion des lvls*/
-        if ($scope.numberOfQuestions == 10 && $scope.noOfGoodAnswers >= 8){
-            $scope.lvl++;
-        }
     }
+
+
 
     $scope.onWrongAnswer = function () {
         $scope.noOfGoodAnswers--;
@@ -156,18 +163,20 @@ function mathtutor($scope) {
         if ($scope.noOfApples <= 0) {
             $("#lost-modal").modal();
         }
-        //document.getElementById('btnAnswer1').disabled = 'disabled';
+        var bad_gif = Math.floor(Math.random()*2);
+        if (bad_gif==0)
+            $scope.url="images/bad_girl.gif";
+        else
+            $scope.url="images/bad_boy.gif";
     }
+
+
+
     $scope.skipQuestion = function () {
         $scope.getNewQuestion();
         $scope.noOfGoodAnswers--;
-        $scope.noOfApples--;
-        if ($scope.noOfApples <= 0) {
-            $("#lost-modal").modal();
-        }
     }
     $scope.range = function (num) {
         return new Array(num);
     }
-
 }

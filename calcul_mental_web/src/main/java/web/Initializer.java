@@ -17,7 +17,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
         super.onStartup(servletContext);
         ServletRegistration.Dynamic servlet = servletContext.addServlet("cxfServlet", new CXFServlet());
         servlet.setLoadOnStartup(1);
-        servlet.addMapping("calcul/*");
+        servlet.addMapping("/*");
     }
 
 
