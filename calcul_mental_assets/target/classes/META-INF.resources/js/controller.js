@@ -7,7 +7,10 @@ function mathtutor($scope) {
     $scope.n2 = 0;
     $scope.url=null;
     $scope.noOfGoodAnswers=0;
+    $scope.GoodAnswers=0;
     $scope.numberOfQuestions=0;
+    $scope.lvlcompteur=1;
+    $scope.lvl= "Niveau : " + $scope.lvlcompteur;
 
 
     $scope.reloadPage = function () {
@@ -56,14 +59,53 @@ function mathtutor($scope) {
         || $scope.answer == $scope.variable2
         || $scope.answer == $scope.variable3 )
         {
-            $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+            $scope.maxNumber = 10;
+            $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
             $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
-            $scope.question = $scope.n1 + " + " + $scope.n2;
-            $scope.variable1= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-            $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-            $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-            $scope.answer = $scope.n1 + $scope.n2;
+            $scope.variable1 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
+            $scope.variable2 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
+            $scope.variable3 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
 
+            if ($scope.GoodAnswers < 8 ) {
+                $scope.question = $scope.n1 + " + " + $scope.n2;
+                $scope.answer = $scope.n1 + $scope.n2;
+
+            } else if ($scope.GoodAnswers > 8 && $scope.GoodAnswers < 16) {
+                $scope.lvlcompteur ++;
+                $scope.n1=$scope.n1+10;
+                $scope.n2= $scope.n2 + 10;
+                $scope.variable1=$scope.variable1+10;
+                $scope.variable2=$scope.variable2+10;
+                $scope.variable3=$scope.variable3+10;
+                $scope.question = $scope.n1 + " + " + $scope.n2;
+                $scope.answer = $scope.n1 + $scope.n2;
+            } else if ($scope.GoodAnswers > 16 && $scope.GoodAnswers < 24) {
+                $scope.lvlcompteur ++;
+                $scope.question = $scope.n1 + " - " + $scope.n2;
+                $scope.answer = $scope.n1 - $scope.n2;
+            } else if ($scope.GoodAnswers > 24 && $scope.GoodAnswers < 36) {
+                $scope.lvlcompteur ++;
+                $scope.n1=$scope.n1+10;
+                $scope.n2= $scope.n2 + 10;
+                $scope.variable1=$scope.variable1+10;
+                $scope.variable2=$scope.variable2+10;
+                $scope.variable3=$scope.variable3+10;
+                $scope.question = $scope.n1 + " - " + $scope.n2;
+                $scope.answer = $scope.n1 - $scope.n2;
+            }else if ($scope.GoodAnswers > 36 && $scope.GoodAnswers < 48) {
+                $scope.lvlcompteur ++;
+                $scope.question = $scope.n1 + " * " + $scope.n2;
+                $scope.answer = $scope.n1 * $scope.n2;
+            }
+            else if ($scope.GoodAnswers > 48) {
+                $scope.n1=$scope.n1+10;
+                $scope.n2= $scope.n2 + 10;
+                $scope.variable1=$scope.variable1+10;
+                $scope.variable2=$scope.variable2+10;
+                $scope.variable3=$scope.variable3+10;
+                $scope.question = $scope.n1 + " * " + $scope.n2;
+                $scope.answer = $scope.n1 * $scope.n2;
+            }
         }
         //Progress bar
         if ($scope.compteurProgressBar == 10){
@@ -143,9 +185,10 @@ function mathtutor($scope) {
 
 
         $scope.noOfGoodAnswers++;
+        $scope.GoodAnswers++;
         $scope.numberOfQuestions++;
 
-        if($scope.numberOfQuestions>=10){
+        if($scope.numberOfQuestions>=10 || $scope.GoodAnswers>=8){
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
@@ -159,6 +202,7 @@ function mathtutor($scope) {
 
     $scope.onWrongAnswer = function () {
         $scope.noOfGoodAnswers--;
+        $scope.GoodAnswers--;
         $scope.noOfApples--;
         if ($scope.noOfApples <= 0) {
             $("#lost-modal").modal();

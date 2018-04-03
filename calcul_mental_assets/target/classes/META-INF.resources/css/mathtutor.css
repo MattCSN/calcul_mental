@@ -5,6 +5,7 @@ body {
     background-image: url("../../../../../images/background.jpg");
     background-size: cover;
     background-attachment: fixed;
+
 }
 .reward-font {
     font-family: 'Handlee', cursive;
@@ -36,8 +37,11 @@ body {
 }
 
 .img-gif{
-    margin-left: 600px;
-    margin-bottom: 800px;
+    margin-right: -300px;
+    margin-top: -980px;
+
+    /*margin-left: 200px;
+    margin-bottom: 1600px;*/
 }
 
 .blackboard {
