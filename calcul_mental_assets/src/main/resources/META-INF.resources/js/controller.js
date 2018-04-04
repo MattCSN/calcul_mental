@@ -1,8 +1,7 @@
 function mathtutor($scope) {
     $scope.gametitle = "Bienvenue";
     $scope.compteurProgressBar = 0;
-    $scope.minNumber = 1;
-    $scope.maxNumber = 10;
+
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.lvl=0;
@@ -46,6 +45,8 @@ function mathtutor($scope) {
 
         if ($scope.lvl ==0)
         {
+            $scope.minNumber = 1;
+            $scope.maxNumber = 10;
             /*$scope.answer = 11;*/
             while ($scope.answer > 10
             || $scope.variable1 == $scope.variable2
@@ -64,6 +65,8 @@ function mathtutor($scope) {
                 $scope.answer = $scope.n1 + $scope.n2;
             }
         }else if ($scope.lvl == 1){
+            $scope.minNumber = 1;
+            $scope.maxNumber = 20;
             /*$scope.answer = 21;*/
             while ($scope.answer > 20
             || $scope.variable1 == $scope.variable2
@@ -82,6 +85,8 @@ function mathtutor($scope) {
                 $scope.answer = $scope.n1 + $scope.n2;
             }
         }else {
+            $scope.minNumber = 1;
+            $scope.maxNumber = 30;
             while ($scope.answer > 30
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
