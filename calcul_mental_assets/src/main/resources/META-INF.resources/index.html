@@ -30,7 +30,16 @@
             <div class="col-sm-4 col-xs-6">
                 <!--Login sans mot de passe-->
                 <div class="login">
-                    <p class="text-left"><input type="text" ng-model="nameLogin" placeholder="Connecte-toi !"></p>
+                    <!--<button class="primary raised" ng-click="showAdvanced($event)">
+                        Se connecter
+                    </button>-->
+                    <!--<p class="text-left"><input type="text" ng-model="nameLogin" placeholder="Connecte-toi !"></p>-->
+                    <p class="text-left">
+                        <input type="text" id="formvalue" ng-model="nameLogin" placeholder="Connecte-toi !" maxlength="10">
+                    </p>
+                    <P>
+                        <button class="alert" ng-click="nameLogin = null" ng-show="nameLogin" >x</button>
+                    </P>
                 </div>
                 <img src="images/Theheart.png" class="apple apple-lives" ng-repeat="a in range(noOfApples) track by $index">
             </div>
@@ -50,7 +59,11 @@
         </div>
 
         <div class="container">
+
             <div class="panel panel-default blackboard-outer">
+                <div id="displayImage" class="gif" style="display: block">
+                    <img src="{{url}}" width="100px" class="img-gif">
+                </div>
                 <div class="panel-body blackboard">
 
                     <p class="question text-center">{{question}}</p>
@@ -86,7 +99,7 @@
                 </div>
 
             <div class="col-sm-2 hidden-xs">
-                <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">Skip</button>
+                <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">&#8658;</button>
             </div>
 <!--
                 <div class="col-sm-1 hidden-xs">
@@ -107,8 +120,8 @@
 
             </div>
         </div>
+
     </div>
-    <img src="{{url}}"  width="300" class="img-gif">
 
     <!--Modals-->
     <div class="modal fade" id="lost-modal">
@@ -123,7 +136,7 @@
                     <p>Recommencer?....</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>-->
                     <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reloadPage()">Recommencer</button>
                 </div>
             </div>
@@ -162,6 +175,16 @@
         function onVoiceAnswer() {
             $('#voicesubmitbutton').click();
         }
+
+        function myFunction() {
+            document.getElementById("displayImage").style="display:none";
+            setInterval(myFunction, 2000);
+        }
+
+        //This calls the myFunction() in the set time.
+
+
+
     </script>
 </body>
 
