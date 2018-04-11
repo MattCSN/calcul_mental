@@ -86,8 +86,8 @@ function mathtutor($scope) {
             }
         }else {
             $scope.minNumber = 1;
-            $scope.maxNumber = 30;
-            while ($scope.answer > 30
+            $scope.maxNumber = 70;
+            while ($scope.answer > 70
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
