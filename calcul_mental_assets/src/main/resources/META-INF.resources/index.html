@@ -61,13 +61,16 @@
         <div class="container">
 
             <div class="panel panel-default blackboard-outer">
-                <div id="displayImage" class="gif" style="display: block">
+                <!--<div id="displayImage" class="gif" style="display: block">
                     <img src="{{url}}" width="100px" class="img-gif">
-                </div>
+                </div>-->
                 <div class="panel-body blackboard">
 
                     <p class="question text-center">{{question}}</p>
                 </div>
+            </div>
+            <div class="col-sm-2 hidden-xs">
+                <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">&#8658;</button>
             </div>
         </div>
         <div class="container answer-row">
@@ -98,11 +101,8 @@
                     </div>
                 </div>
 
-            <div class="col-sm-2 hidden-xs">
-                <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">&#8658;</button>
-            </div>
-<!--
-                <div class="col-sm-1 hidden-xs">
+
+                <!--<div class="col-sm-1 hidden-xs">
                 </div>
                 <div class="col-sm-6 col-xs-8">
                     <input type="text" class="form-control" id="answer" placeholder="Answer here!!!!" ng-model="userAnswer" x-webkit-speech onwebkitspeechchange="onVoiceAnswer()">
@@ -112,11 +112,7 @@
                 </div>
                 <div class="hidden">
                     <button class="btn btn-primary" ng-click="onVoiceAnswer()" id="voicesubmitbutton">Voice Submit</button>
-                </div>
-                <div class="col-sm-2 hidden-xs">
-                    <button class="btn btn-danger center-block full-width" ng-click="skipQuestion()">Skip</button>
-                </div>
--->
+                </div>-->
 
             </div>
         </div>
@@ -148,7 +144,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
                     <h4 class="modal-title">Bravo, tu as r&eacute;ussi le niveau!</h4>
                 </div>
                 <div class="modal-body">
@@ -156,7 +152,7 @@
                     <p class="final-score" ng-bind-html="scoreText"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reloadPage()">Fermer</button>-->
                     <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="reloadPage()">Recommencer</button>
                 </div>
             </div>
@@ -176,14 +172,11 @@
             $('#voicesubmitbutton').click();
         }
 
+        /*timer pour gif*/
         function myFunction() {
             document.getElementById("displayImage").style="display:none";
             setInterval(myFunction, 2000);
         }
-
-        //This calls the myFunction() in the set time.
-
-
 
     </script>
 </body>
