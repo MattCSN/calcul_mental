@@ -6,14 +6,41 @@ function mathtutor($scope) {
     $scope.n2 = 0;
     $scope.lvl=0;
 
+
+    //TODO: fonction pour se connecter AJAX pour communiquer avec UtilisateurController sur un GET
+    function getConnectedUser(){
+        //recup val bouton
+        /*var xml = ( window.XMLHttpRequest ) ?
+        new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+
+        xml.open("GET", user/myName, true);
+        xml.setRequestHeader("Content-type", "application/json");
+
+        xml.onreadystatechange = function()
+        {
+            if( xml.readyState === 4 &&
+                xml.status     === 200 )
+            {
+                var serverResponse = JSON.parse(xml.responseText);
+                switch(serverResponse.d)
+                {
+                    // do stuff
+                }
+            }
+        }
+        xml.send(null);
+        */
+    }
+    //TODO: fonction pour récupérer
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
         //$scope.myFunction();
-
+        //TODO: appeler la fonction de connection si non connecté
     }
+
     $scope.getRandomIndex = function(length){
         return Math.floor(Math.random() * length);
     }
@@ -195,6 +222,7 @@ function mathtutor($scope) {
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
                     $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
+            //TODO: envoyer le score en ajax sur un POST /user/score...
         }
         else{$scope.getNewQuestion();}
 
