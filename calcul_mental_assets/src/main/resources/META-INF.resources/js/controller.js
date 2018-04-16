@@ -1,14 +1,16 @@
-function mathtutor($scope) {
+function mathtutor($scope, $compile, UtilisateurWS) {
     $scope.gametitle = "Bienvenue";
     $scope.compteurProgressBar = 0;
 
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.lvl=0;
+    $scope.userID=null;
 
 
     //TODO: fonction pour se connecter AJAX pour communiquer avec UtilisateurController sur un GET
     function getConnectedUser(){
+
         //recup val bouton
         /*var xml = ( window.XMLHttpRequest ) ?
         new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
@@ -24,19 +26,21 @@ function mathtutor($scope) {
                 var serverResponse = JSON.parse(xml.responseText);
                 switch(serverResponse.d)
                 {
-                    // do stuff
+                    //GET user id et stocker sous forme userID =
                 }
             }
         }
         xml.send(null);
         */
     }
+
     //TODO: fonction pour récupérer
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
+        getConnectedUser();
         //$scope.myFunction();
         //TODO: appeler la fonction de connection si non connecté
     }

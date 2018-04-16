@@ -26,6 +26,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
+    public Utilisateur findByNom(String nom) {
+        return utilisateurDAO.findByNom(nom);
+    }
+
+    @Override
     public void saveUtilisateur(Utilisateur utilisateur) {
         utilisateurDAO.save(utilisateur);
     }

@@ -8,5 +8,6 @@ public interface UtilisateurService {
 
     List<Utilisateur> findAll();
     Utilisateur findById(long id);
+    Utilisateur findByNom(String nom);
     void saveUtilisateur(Utilisateur utilisateur);
 }

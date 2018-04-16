@@ -42,4 +42,5 @@ public class UtilisateurController implements RestController{
         logger.info("Getting the User of id: "+id);
         return utilisateurService.findById(id);
     }
+    
 }
