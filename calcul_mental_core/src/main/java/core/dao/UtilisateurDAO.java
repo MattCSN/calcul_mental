@@ -10,5 +10,6 @@ public interface UtilisateurDAO extends JpaRepository<Utilisateur,Long> {
     @Override
     List<Utilisateur> findAll();
     Utilisateur findById(long id);
+    Utilisateur findByNom(String nom);
 
 }

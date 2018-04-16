@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Named
-@Path("/")
+@Path("/user")
 public class UtilisateurController implements RestController{
 
     private static final Logger logger = LoggerFactory.getLogger(UtilisateurController.class);
@@ -42,4 +42,5 @@ public class UtilisateurController implements RestController{
         logger.info("Getting the User of id: "+id);
         return utilisateurService.findById(id);
     }
+    
 }

@@ -2,7 +2,7 @@ body {
     padding-top: 30px;
     background-color: darkslategrey;
     /*    background-color: #B6D7F2;*/
-    background-image: url("../../../../../images/background.jpg");
+    /*background-image: url("../../../../../images/background.jpg");*/
     background-size: cover;
     background-attachment: fixed;
 }
@@ -163,4 +163,5 @@ input{
     z-index: 1;
     height: 100px;
     width: 50px;
+    padding-left: 33%;
 }
