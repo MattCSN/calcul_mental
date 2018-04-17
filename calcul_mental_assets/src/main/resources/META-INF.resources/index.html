@@ -35,7 +35,7 @@
                 </button>-->
                 <!--<p class="text-left"><input type="text" ng-model="nameLogin" placeholder="Connecte-toi !"></p>-->
                 <p class="text-left">
-                    <input type="text" id="formvalue" ng-model="nameLogin" placeholder="Connecte-toi !" maxlength="10">
+                    <input type="text" id="pseudo" ng-model="nameLogin" placeholder="Connecte-toi !" maxlength="10">
                 </p>
                 <P>
                     <button class="alert" ng-click="nameLogin = null" ng-show="nameLogin" >x</button>
@@ -97,24 +97,21 @@
                         </li>
                     </ul>
                 </div>
+                <button  ng-click="saveScore()" type="button" class="btn btn-success">Sauvegarder</button>
 
             </div>
         </div>
-
-
-        <!--<div class="col-sm-1 hidden-xs">
-        </div>
-        <div class="col-sm-6 col-xs-8">
-            <input type="text" class="form-control" id="answer" placeholder="Answer here!!!!" ng-model="userAnswer" x-webkit-speech onwebkitspeechchange="onVoiceAnswer()">
-        </div>
-        <div class="col-sm-2 col-xs-4">
-            <button class="btn btn-primary center-block full-width" ng-click="onSubmitAnswer()" id="submitbutton">Submit</button>
-        </div>
-        <div class="hidden">
-            <button class="btn btn-primary" ng-click="onVoiceAnswer()" id="voicesubmitbutton">Voice Submit</button>
-        </div>-->
-
     </div>
+    <table id="leaderBoard" class="table">
+        <thead>
+            <th scope="col">Pseudo</th>
+            <th scope="col">Score</th>
+        </thead>
+        <tr>
+            <td>Antoine</td>
+            <td>99999</td>
+        </tr>
+    </table>
 </div>
 
 </div>

@@ -305,4 +305,13 @@ function mathtutor($scope) {
         return new Array(num);
     }
 
+    $scope.saveScore = function(){
+        var table = document.getElementById("leaderBoard");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = $scope.nameLogin;
+        cell2.innerHTML = $scope.lvl;
+    }
+
 }
