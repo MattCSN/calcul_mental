@@ -1,50 +1,19 @@
-function mathtutor($scope, $compile, UtilisateurWS) {
+function mathtutor($scope) {
     $scope.gametitle = "Bienvenue";
     $scope.compteurProgressBar = 0;
 
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.lvl=0;
-    $scope.userID=null;
 
-
-    //TODO: fonction pour se connecter AJAX pour communiquer avec UtilisateurController sur un GET
-    function getConnectedUser(){
-
-        //recup val bouton
-        /*var xml = ( window.XMLHttpRequest ) ?
-        new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-
-        xml.open("GET", user/myName, true);
-        xml.setRequestHeader("Content-type", "application/json");
-
-        xml.onreadystatechange = function()
-        {
-            if( xml.readyState === 4 &&
-                xml.status     === 200 )
-            {
-                var serverResponse = JSON.parse(xml.responseText);
-                switch(serverResponse.d)
-                {
-                    //GET user id et stocker sous forme userID =
-                }
-            }
-        }
-        xml.send(null);
-        */
-    }
-
-    //TODO: fonction pour récupérer
     $scope.reloadPage = function () {
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
         $scope.getNewQuestion();
-        getConnectedUser();
         //$scope.myFunction();
-        //TODO: appeler la fonction de connection si non connecté
-    }
 
+    }
     $scope.getRandomIndex = function(length){
         return Math.floor(Math.random() * length);
     }
@@ -68,72 +37,136 @@ function mathtutor($scope, $compile, UtilisateurWS) {
         return array;
     }
 
+
+
     $scope.getNewQuestion = function () {
 
         $scope.variable1 = 0;
         $scope.variable2 = 0;
         $scope.variable3 = 0;
 
-        if ($scope.lvl ==0)
-        {
-            $scope.minNumber = 1;
-            $scope.maxNumber = 10;
-            /*$scope.answer = 11;*/
-            while ($scope.answer > 10
+        var generateNewAddition = function () {
+            while ($scope.answer > $scope.maxNumber
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
             || $scope.answer == $scope.variable1
             || $scope.answer == $scope.variable2
-            || $scope.answer == $scope.variable3 )
-            {
-                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+            || $scope.answer == $scope.variable3) {
+                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
                 $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
                 $scope.question = $scope.n1 + " + " + $scope.n2;
-                $scope.variable1= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
+                $scope.variable1 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
+                $scope.variable2 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
+                $scope.variable3 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) + $scope.minNumber);
                 $scope.answer = $scope.n1 + $scope.n2;
+
             }
-        }else if ($scope.lvl == 1){
-            $scope.minNumber = 1;
-            $scope.maxNumber = 20;
-            /*$scope.answer = 21;*/
-            while ($scope.answer > 20
+
+        };
+
+        var generateNewSoustraction = function () {
+            while ($scope.answer > $scope.maxNumber
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
             || $scope.answer == $scope.variable1
             || $scope.answer == $scope.variable2
-            || $scope.answer == $scope.variable3 )
-            {
-                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+            || $scope.answer == $scope.variable3
+            || $scope.n1 < $scope.n2) {
+                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
                 $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
-                $scope.question = $scope.n1 + " + " + $scope.n2;
-                $scope.variable1= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.answer = $scope.n1 + $scope.n2;
+                $scope.question = $scope.n1 + " - " + $scope.n2;
+                $scope.variable1 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) - $scope.minNumber);
+                $scope.variable2 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) - $scope.minNumber);
+                $scope.variable3 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) - $scope.minNumber);
+                $scope.answer = $scope.n1 - $scope.n2;
+
             }
-        }else {
-            $scope.minNumber = 1;
-            $scope.maxNumber = 70;
-            while ($scope.answer > 70
+
+        };
+
+        var generateNewMultiplication = function () {
+            while ($scope.answer > $scope.maxNumber * $scope.minNumber
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
             || $scope.answer == $scope.variable1
             || $scope.answer == $scope.variable2
-            || $scope.answer == $scope.variable3 )
-            {
-                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber)+1;
+            || $scope.answer == $scope.variable3
+            || $scope.n1 < $scope.n2) {
+                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
                 $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
-                $scope.question = $scope.n1 + " + " + $scope.n2;
-                $scope.variable1= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable2= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.variable3= Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber +1)+ $scope.minNumber);
-                $scope.answer = $scope.n1 + $scope.n2;
+                $scope.question = $scope.n1 + " x " + $scope.n2;
+                $scope.variable1 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) * $scope.minNumber);
+                $scope.variable2 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) * $scope.minNumber);
+                $scope.variable3 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) * $scope.minNumber);
+                $scope.answer = $scope.n1 * $scope.n2;
+
             }
+
+        }
+
+        var generateNewDivision = function () {
+            while ($scope.answer > $scope.maxNumber
+            || $scope.variable1 == $scope.variable2
+            || $scope.variable1 == $scope.variable3
+            || $scope.variable2 == $scope.variable3
+            || $scope.answer == $scope.variable1
+            || $scope.answer == $scope.variable2
+            || $scope.answer == $scope.variable3
+            || $scope.n1 % $scope.n2 !== 0) {
+                $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
+                $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
+                $scope.question = $scope.n1 + " / " + $scope.n2;
+                $scope.variable1 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) / $scope.minNumber);
+                $scope.variable2 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) / $scope.minNumber);
+                $scope.variable3 = Math.floor(Math.random() * ($scope.maxNumber - $scope.minNumber + 1) / $scope.minNumber);
+                $scope.answer = $scope.n1 / $scope.n2;
+
+            }
+
+        };
+
+        /** ******************************************************************************************************** **/
+        /** Pour ajouter un nouveau niveau de difficulté :                                                           **/
+        /**                                                                                                          **/
+        /** "case n:                                                                                                 **/
+        /** $scope.minNumber = 1; $scope.maxNumber = 10;                                                             **/
+        /** Puis :                                                                                                   **/
+        /**       - Copier/Coller: "generateNewAddition(); " ci-dessous pour ajouter une nouvelle addition           **/
+        /**       - Copier/Coller: "generateNewSoustraction(); " ci-dessous pour ajouter une nouvelle addition       **/
+        /**       - Copier/Coller: "generateNewMultiplication(); " ci-dessous pour ajouter une nouvelle addition     **/
+        /**       - Copier/Coller: "generateNewDivision(); " ci-dessous pour ajouter une nouvelle addition           **/
+        /** break; "                                                                                                 **/
+        /** ******************************************************************************************************** **/
+
+        switch ($scope.lvl) {
+            case 0:
+                $scope.minNumber = 1;
+                $scope.maxNumber = 10;
+                generateNewAddition();
+                break;
+            case 1:
+                $scope.minNumber = 1;
+                $scope.maxNumber = 20;
+                generateNewSoustraction();
+                break;
+            case 2:
+                $scope.minNumber = 2;
+                $scope.maxNumber = 20;
+                generateNewMultiplication();
+                break;
+            case 3:
+                $scope.minNumber = 3;
+                $scope.maxNumber = 30;
+                generateNewDivision();
+                break;
+            default:
+                $scope.minNumber = 1;
+                $scope.maxNumber = 70;
+                generateNewDivision();
+
         }
 
         //Progress bar
@@ -225,8 +258,7 @@ function mathtutor($scope, $compile, UtilisateurWS) {
         if($scope.numberOfQuestions>=10){
             $('#end-run-modal').modal();
             $('#final-score').innerHTML = ''+$scope.noOfGoodAnswers+' / '+
-                    $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
-            //TODO: envoyer le score en ajax sur un POST /user/score...
+                $scope.numberOfQuestions+' avec '+(3-$scope.noOfApples)+' erreurs';
         }
         else{$scope.getNewQuestion();}
 
