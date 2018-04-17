@@ -165,3 +165,16 @@ input{
     width: 50px;
     padding-left: 33%;
 }
+
+.table{
+    margin-top: 20px;
+    background: #cccccc;
+    font-family: 'Handlee', cursive;
+    font-size: 30px;
+    text-align: center;
+}
+
+.tableHead{
+    font-size: 35px;
+    font-weight: bold;
+}

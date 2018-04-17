@@ -7,15 +7,18 @@ angularApp.factory('UtilisateurWS', ['$resource', function ($resource) {
         });
 }]);
 
+
 function mathtutor($scope) {
     $scope.gametitle = "Bienvenue";
     $scope.compteurProgressBar = 0;
 
+    $scope.score =0;
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.lvl=0;
 
     $scope.reloadPage = function () {
+        /*$scope.nameLogin = null;*/
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
         $scope.noOfGoodAnswers = 0;
@@ -49,10 +52,11 @@ function mathtutor($scope) {
 
 
     $scope.getNewQuestion = function () {
-
         $scope.variable1 = 0;
         $scope.variable2 = 0;
         $scope.variable3 = 0;
+
+        $scope.score = $scope.score + $scope.noOfGoodAnswers;
 
         var generateNewAddition = function () {
             while ($scope.answer > $scope.maxNumber
@@ -311,7 +315,9 @@ function mathtutor($scope) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         cell1.innerHTML = $scope.nameLogin;
-        cell2.innerHTML = $scope.lvl;
+        cell2.innerHTML = $scope.score;
+
+
     }
 
 }
