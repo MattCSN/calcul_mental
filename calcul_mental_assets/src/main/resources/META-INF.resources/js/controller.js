@@ -11,13 +11,15 @@ angularApp.factory('UtilisateurWS', ['$resource', function ($resource) {
 function mathtutor($scope) {
     $scope.gametitle = "Bienvenue";
     $scope.compteurProgressBar = 0;
-
+    $scope.nameLogin="";
     $scope.score =0;
     $scope.n1 = 0;
     $scope.n2 = 0;
     $scope.lvl=0;
 
+
     $scope.reloadPage = function () {
+        $scope.compteurProgressBar = 0;
         /*$scope.nameLogin = null;*/
         $scope.numberOfQuestions = 0;
         $scope.noOfApples = 3;
@@ -56,7 +58,11 @@ function mathtutor($scope) {
         $scope.variable2 = 0;
         $scope.variable3 = 0;
 
-        $scope.score = $scope.score + $scope.noOfGoodAnswers;
+        if($scope.noOfApples <=0){
+            $scope.score = 0 ;
+        }else {
+            $scope.score = $scope.score + $scope.noOfGoodAnswers;
+        }
 
         var generateNewAddition = function () {
             while ($scope.answer > $scope.maxNumber
@@ -100,14 +106,14 @@ function mathtutor($scope) {
         };
 
         var generateNewMultiplication = function () {
-            while ($scope.answer > $scope.maxNumber * $scope.minNumber
+            while ($scope.answer > $scope.maxNumber * $scope.maxNumber
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
             || $scope.answer == $scope.variable1
             || $scope.answer == $scope.variable2
             || $scope.answer == $scope.variable3
-            || $scope.n1 < $scope.n2) {
+                ) {
                 $scope.n1 = Math.floor(Math.random() * $scope.maxNumber) + 1;
                 $scope.n2 = Math.floor(Math.random() * $scope.maxNumber);
                 $scope.question = $scope.n1 + " x " + $scope.n2;
@@ -121,7 +127,7 @@ function mathtutor($scope) {
         }
 
         var generateNewDivision = function () {
-            while ($scope.answer > $scope.maxNumber
+            while ($scope.answer > $scope.maxNumber *$scope.maxNumber
             || $scope.variable1 == $scope.variable2
             || $scope.variable1 == $scope.variable3
             || $scope.variable2 == $scope.variable3
@@ -175,16 +181,21 @@ function mathtutor($scope) {
                 $scope.maxNumber = 30;
                 generateNewDivision();
                 break;
+            case 4:
+                $scope.minNumber = 20;
+                $scope.maxNumber = 30;
+                generateNewSoustraction();
+                break;
             default:
-                $scope.minNumber = 1;
-                $scope.maxNumber = 70;
+                $scope.minNumber = 99;
+                $scope.maxNumber = 999;
                 generateNewDivision();
 
         }
 
         //Progress bar
         if ($scope.compteurProgressBar == 10){
-            $scope.compteurProgressBar = 1;
+
             $scope.progressBar = "Question : " + $scope.compteurProgressBar + "/ 10"
         }else{
             $scope.compteurProgressBar ++;
@@ -309,15 +320,29 @@ function mathtutor($scope) {
         return new Array(num);
     }
 
-    $scope.saveScore = function(){
+    $scope.itemScore = [] ;
+    $scope.item = {Name:"Antoine",Score:"999999"};
+
+    /*$scope.addItem = function() {
+        for (var i = 0; i < $scope.item.length; i++)
+            if ($scope.item[i].$scope.nameLogin){
+            $scope.itemScore.push({
+                'Name': $scope.item[i].Name,
+                'Score': $scope.item[i].Score
+            });
+            }
+    };*/
+
+    $scope.saveScore = function(item){
+        /*$scope.itemScore.push(item);*/
         var table = document.getElementById("leaderBoard");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
+        var cell1;
+        var cell2;
+        var row = table.insertRow(2);
+        cell1 = row.insertCell(0);
+        cell2 = row.insertCell(1);
         cell1.innerHTML = $scope.nameLogin;
         cell2.innerHTML = $scope.score;
-
-
     }
 
 }

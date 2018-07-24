@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app ="calc">
+<html ng-app="calc" xmlns:ui="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Calcul Mental</title>
@@ -19,7 +19,7 @@
 
 </head>
 
-<body ng-init="reloadPage()" ng-controller="mathtutor">
+<body ng-init="reloadPage()" ng-controller="mathtutor as vm">
 <div class="container">
     <div class="row">
         <div class="col-xs-12 visible-xs">
@@ -35,7 +35,7 @@
                 </button>-->
                 <!--<p class="text-left"><input type="text" ng-model="nameLogin" placeholder="Connecte-toi !"></p>-->
                 <p class="text-left">
-                    <button class="btn btn-danger" onclick="window.location.reload()" ng-show="nameLogin" >x</button>
+                    <button class="btn-danger" onclick="window.location.reload()" ng-show="nameLogin" >&times;</button>
                     <input type="text" id="pseudo" ng-model="nameLogin" placeholder="Connecte-toi !" maxlength="10">
                 </p>
             </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-sm-4 hidden-xs">
             <div class="game-title">
-                <p class="text-center">{{gametitle}} {{nameLogin}}</p>
+                <p class="text-center">{{gametitle}} {{nameLogin.Name}}</p>
             </div>
         </div>
         <div class="col-sm-4 col-xs-6">
@@ -59,9 +59,9 @@
     <div class="container">
 
         <div class="panel panel-default blackboard-outer">
-            <!--<div id="displayImage" class="gif" style="display: block">
+            <div id="displayImage" class="gif" style="display: block">
                 <img src="{{url}}" width="300px" class="img-gif">
-            </div>-->
+            </div>
             <div class="panel-body blackboard">
 
                 <p class="question text-center">{{question}}</p>
@@ -88,7 +88,7 @@
                             <!-- <span>{{item.position}}</span> -->
                             <!--<button ng-click="increment(item);" class="btn btn-default"><a >{{item.name}}</a></button>-->
 
-                            <button  ng-value="{{tests[0]}}" id="btn1" ng-click="onSubmitAnswer($event)" class="btn btn-default agrandir">{{tests[0]}}</button>
+                            <button  ng-value="{{tests[0]}}"  id="btn1" ng-click="onSubmitAnswer($event)"  class="btn btn-default agrandir">{{tests[0]}}</button>
                             <button  ng-value="{{tests[1]}}"  id="btn2" ng-click="onSubmitAnswer2($event)" class="btn btn-default agrandir">{{tests[1]}}</button>
                             <button  ng-value="{{tests[2]}}"  id="btn3" ng-click="onSubmitAnswer3($event)" class="btn btn-default agrandir">{{tests[2]}}</button>
                             <button  ng-value="{{tests[3]}}"  id="btn4" ng-click="onSubmitAnswer4($event)" class="btn btn-default agrandir">{{tests[3]}}</button>
@@ -100,15 +100,31 @@
             </div>
         </div>
     </div>
+
+    <!--<table id="leaderBoard" class="table table-dark" ng-init="vm.">
+        <thead class="tableHead">
+        <th scope="col">Pseudo</th>
+        <th scope="col">Niveau</th>
+        </thead>
+        <tbody ui:sortable>
+        <tr ng-repeat="item in itemScore">
+            <td>{{item.Name}}</td>
+            <td>{{item.Score}}</td>
+        </tr>
+        </tbody>
+    </table>-->
+
     <table id="leaderBoard" class="table table-dark">
         <thead class="tableHead">
             <th scope="col">Pseudo</th>
-            <th scope="col">Niveau</th>
+            <th scope="col">Score</th>
         </thead>
-        <tr>
-            <td>Antoine</td>
-            <td>99999</td>
-        </tr>
+        <tbody ui:sortable>
+            <tr >  <!--ng-repeat="item in itemScore"-->
+                <td>Antoine</td>
+                <td>999999</td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
